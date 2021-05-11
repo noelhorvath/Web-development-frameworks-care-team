@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div>
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <mat-form-field>
+        <mat-label>Email:</mat-label>
+        <input matInput type="email" name="userEmail" formControlName="email"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password:</mat-label>
+        <input matInput type="password" name="userEmail" formControlName="password"/>
+      </mat-form-field>
+      <mat-card id="alertCard" *ngIf="alertMessage">
+        {{alertMessage}}
+      </mat-card>
+      <button type="submit" color="primary" mat-button [disabled]="form.invalid">Login</button>
+      <button mat-button (click)="navTo('/registration')">Create new account</button>
+    </form>
+  </mat-card>
+</div>
