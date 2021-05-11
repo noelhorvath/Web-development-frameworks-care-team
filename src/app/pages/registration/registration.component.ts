@@ -43,7 +43,7 @@ export class RegistrationComponent implements OnInit {
     if(this.form.value.password === this.form.value.passwordAgain){
       this.authService.register(this.form.value.email, this.form.value.password).then(
         result =>{
-          // redirect
+          this.navTo('login')
         },
         error =>{
           this.alertMessage = error.code;

@@ -26,20 +26,18 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(this.form.value.email, this.form.value.password).then(
       result => {
-        // navigate to home
+        this.navTo('home');
       },
       error => {
         if (error.code === 'auth/user-not-found') {
-          this.alertMessage = "This email is not registered!"
+          this.alertMessage = "This email is not registered!";
         } else if(error.code === 'auth/wrong-password'){
-          this.alertMessage = "Wrong password!"
+          this.alertMessage = "Wrong password!";
         } else{
-          this.alertMessage = "Service is unavailable at the moment!"
+          this.alertMessage = "Service is unavailable at the moment!";
         }
       }
     )
-
-
   }
 
   navTo(url: string): void {
