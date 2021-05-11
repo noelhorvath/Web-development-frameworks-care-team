@@ -4,7 +4,13 @@ export interface CareTeam {
   name: string;
   subject?: string;
   period?: string;
-  participant: string[];
+  participant: Participant[]
+}
+
+interface Participant {
+  member: string,
+  onBehalfOf: string,
+  period: string,
 }
 
 enum status {
