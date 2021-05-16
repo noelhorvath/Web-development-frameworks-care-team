@@ -1,4 +1,5 @@
 export interface CareTeam {
+  id: string;
   status: status;
   category?: string[];
   name: string;
@@ -10,7 +11,7 @@ export interface CareTeam {
 interface Participant {
   member: string,
   onBehalfOf: string,
-  period: string,
+  period: string
 }
 
 enum status {
