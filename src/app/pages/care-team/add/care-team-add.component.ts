@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
+import {FormGroup} from "@angular/forms";
+import {getCareTeamForm} from "../../../shared/forms/care-team.form";
 
 @Component({
   selector: 'app-care-team-add',
@@ -6,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./care-team-add.component.scss']
 })
 export class CareTeamAddComponent implements OnInit {
+  form: FormGroup = getCareTeamForm();
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<CareTeamAddComponent>) { }
 
   ngOnInit(): void {
   }
