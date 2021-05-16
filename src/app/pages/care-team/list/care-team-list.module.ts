@@ -7,11 +7,10 @@ import {CareTeamListRoutingModule} from "./care-team-list-routing.module";
 
 @NgModule({
   declarations: [
-    CareTeamListComponent,
-    CareTeamListRoutingModule
+    CareTeamListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, CareTeamListRoutingModule
   ]
 })
 export class CareTeamListModule { }
