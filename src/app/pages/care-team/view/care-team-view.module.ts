@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ViewComponent } from './view.component';
+import { CareTeamViewComponent } from './care-team-view.component';
 
 
 
 @NgModule({
   declarations: [
-    ViewComponent
+    CareTeamViewComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class ViewModule { }
+export class CareTeamViewModule { }
