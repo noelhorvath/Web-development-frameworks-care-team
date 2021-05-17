@@ -1,4 +1,4 @@
 export interface Participant {
   member: string,
-  onBehalfOf: string
+  onBehalfOf?: string
 }
