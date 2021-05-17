@@ -1,6 +1,6 @@
+<h2 mat-dialog-title>Add new care team</h2>
 <mat-dialog-content>
   <form [formGroup]="form">
-    <h2>Add new care team</h2>
     <br/>
     <mat-form-field>
       <mat-label>Name</mat-label>
@@ -63,9 +63,9 @@
         <br/>
       </ng-container>
     </ng-container>
-    <div>
-      <button mat-button (click)="dialogRef.close()">Cancel</button>
-      <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">Add</button>
-    </div>
   </form>
 </mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">Add</button>
+</mat-dialog-actions>
