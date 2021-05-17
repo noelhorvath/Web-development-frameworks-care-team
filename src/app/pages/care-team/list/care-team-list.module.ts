@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CareTeamListComponent } from './care-team-list.component';
 import {CareTeamListRoutingModule} from "./care-team-list-routing.module";
+import {MatButtonModule} from "@angular/material/button";
+import {CareTeamAddModule} from "../add/care-team-add.module";
 
 
 
@@ -9,8 +11,8 @@ import {CareTeamListRoutingModule} from "./care-team-list-routing.module";
   declarations: [
     CareTeamListComponent
   ],
-  imports: [
-    CommonModule, CareTeamListRoutingModule
-  ]
+    imports: [
+        CommonModule, CareTeamListRoutingModule, MatButtonModule, CareTeamAddModule
+    ]
 })
 export class CareTeamListModule { }
