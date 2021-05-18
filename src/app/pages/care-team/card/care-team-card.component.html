@@ -9,7 +9,7 @@
     <p>{{careTeam.period?.start}}-{{ careTeam.period?.end }}</p>
   </mat-card-content>
   <mat-card-footer>
-    <button mat-button>View</button>
-    <button mat-button>Delete</button>
+    <button mat-button (click)="deleteCareTeam()">Delete</button>
+    <ng-container *ngIf="alertMsg">{{alertMsg}}</ng-container>
   </mat-card-footer>
 </mat-card>

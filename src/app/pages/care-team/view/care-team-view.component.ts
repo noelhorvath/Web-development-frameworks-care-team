@@ -71,8 +71,10 @@ export class CareTeamViewComponent implements OnInit, OnDestroy {
   }
 
   deleteCareTeam(): void {
-    this.fbs.delete(this.collectionName,this.id).catch(error =>{
-      console.log(error.message)
+    this.fbs.delete(this.collectionName,this.id).then(result =>{
+      this.alertMsg = 'Care team has been successfully deleted!'
+    }).catch(error =>{
+      this.alertMsg = 'There was an error while deleting care team: ' + error.message;
     })
   }
 }
