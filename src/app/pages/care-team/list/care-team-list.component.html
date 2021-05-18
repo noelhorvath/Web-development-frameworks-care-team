@@ -1,8 +1,6 @@
 <button mat-button color="primary" (click)="openAddDialog()">Test add</button>
 <ng-container *ngIf="alertMsg !== undefined">{{ alertMsg }}</ng-container>
-<div *ngIf="careTeams === undefined; then empty else list">
-  <p>This content is not shown</p>
-</div>
+<div *ngIf="careTeams === undefined; then empty else list"></div>
 
 <ng-template #empty>
   <p>No care teams are available!</p>

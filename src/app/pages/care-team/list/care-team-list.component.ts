@@ -3,8 +3,6 @@ import {CareTeamAddComponent} from "../add/care-team-add.component";
 import {CareTeam} from "../../../shared/models/careteam.model";
 import {MatDialog} from "@angular/material/dialog";
 import {FbBaseService} from "../../../services/fb-base.service";
-import {Period} from "../../../shared/models/period.model";
-import {Participant} from "../../../shared/models/participant.model";
 import {Router} from "@angular/router";
 
 @Component({
@@ -36,7 +34,7 @@ export class CareTeamListComponent implements OnInit, OnDestroy {
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(CareTeamAddComponent,{});
-    const subscription = dialogRef.afterClosed().subscribe((careTeam: CareTeam) => {
+    dialogRef.afterClosed().subscribe((careTeam: CareTeam) => {
       if(careTeam !== undefined){
         this.fbs.create(this.collectionName,careTeam).then(result =>{
           this.alertMsg = "New care team has been successfully added!";
@@ -48,7 +46,6 @@ export class CareTeamListComponent implements OnInit, OnDestroy {
     }, error => {
       console.warn(error);
     });
-    subscription.unsubscribe();
   }
 
   goToView(event: string) {
