@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {getCareTeamForm} from "../../../shared/forms/care-team.form";
+import {CareTeam} from "../../../shared/models/careteam.model";
+import {Participant} from "../../../shared/models/participant.model";
 
 @Component({
   selector: 'app-care-team-add',
@@ -10,9 +12,9 @@ import {getCareTeamForm} from "../../../shared/forms/care-team.form";
 })
 export class CareTeamAddComponent implements OnInit {
   form: FormGroup = getCareTeamForm();
+  btnName: any;
 
-  constructor(private fb: FormBuilder,
-              public dialogRef: MatDialogRef<CareTeamAddComponent>) {}
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<CareTeamAddComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
 
   get categories() {
@@ -44,7 +46,27 @@ export class CareTeamAddComponent implements OnInit {
     this.categories.removeAt(index);
   }
 
+  loadCareTeamIntoForm(): void{
+    console.log(this.data);
+    if(this.data !== null){
+      (<CareTeam> this.data).participant.forEach((par: Participant) =>{
+        this.addParticipantFormGroup();
+      });
+      (<CareTeam> this.data).category?.forEach((cat: string) => {
+        this.addCategoryFormControl();
+      });
+      this.form.patchValue(this.data as CareTeam);
+    }
+  }
+
   ngOnInit(): void {
+    this.loadCareTeamIntoForm();
+    if(this.data === null){
+      this.addParticipantFormGroup();
+      this.btnName = 'Add';
+    }else{
+      this.btnName = 'Update';
+    }
   }
 
 }

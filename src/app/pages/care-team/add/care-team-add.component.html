@@ -67,5 +67,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="dialogRef.close()">Cancel</button>
-  <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">Add</button>
+  <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">{{btnName}}</button>
 </mat-dialog-actions>
