@@ -46,7 +46,7 @@ export class RegistrationComponent implements OnInit {
           this.navTo('login')
         },
         error =>{
-          this.alertMessage = error.code;
+          this.alertMessage = error.message;
         }
       )
     }else{
