@@ -4,6 +4,7 @@ import { CareTeamViewComponent } from './care-team-view.component';
 import {CareTeamViewRoutingModule} from "./care-team-view-routing.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import {CareTeamAddModule} from "../add/care-team-add.module";
 
 
 
@@ -12,7 +13,7 @@ import {MatButtonModule} from "@angular/material/button";
     CareTeamViewComponent
   ],
   imports: [
-    CommonModule, CareTeamViewRoutingModule, MatCardModule, MatButtonModule
+    CommonModule, CareTeamViewRoutingModule, MatCardModule, MatButtonModule, CareTeamAddModule
   ]
 })
 export class CareTeamViewModule { }

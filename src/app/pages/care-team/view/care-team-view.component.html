@@ -1,24 +1,34 @@
 <div *ngIf="careTeam === undefined; then notfound else found"></div>
 
 <ng-template #notfound>
-  <p>{{alertMsg}}</p>
+  <p>{{notFoundMsg}}</p>
 </ng-template>
 
 <ng-template #found>
   <mat-card>
     <mat-card-title>{{careTeam.name}}</mat-card-title>
     <mat-card-content>
+      <p>Categories:</p>
+      <ng-container *ngFor="let cat of careTeam?.category">
+        <p>{{cat}}</p>
+      </ng-container>
       <p>Status:</p>
       <p>{{careTeam.status}}</p>
-      <p>Number of participants</p>
-      <p>{{careTeam.participant.length}}</p>
+      <p>Participants</p>
+        <ng-container *ngFor="let item of careTeam.participant">
+          <p>Member's name: {{ item.member }}</p>
+          <p>On behalf of: {{ item?.onBehalfOf }}</p>
+        </ng-container>
+      <p>Subject:</p>
+      <p>{{careTeam?.subject}}</p>
       <p>Period:</p>
       <p>{{careTeam.period?.start}}-{{ careTeam.period?.end }}</p>
     </mat-card-content>
     <mat-card-footer>
-      <button mat-button>Update</button>
-      <button mat-button>Delete</button>
+      <button mat-button (click)="openAddDialogForUpdate()">Update</button>
+      <button mat-button (click)="deleteCareTeam()">Delete</button>
       <button mat-button (click)="navigateBack()">Back</button>
+      <ng-container *ngIf="alertMsg">{{alertMsg}}</ng-container>
     </mat-card-footer>
   </mat-card>
 </ng-template>
