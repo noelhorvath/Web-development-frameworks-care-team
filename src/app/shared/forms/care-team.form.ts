@@ -10,11 +10,6 @@ export function getCareTeamForm(): FormGroup {
       start: new FormControl(''),
       end: new FormControl('')
     }),
-    participant: new FormArray([
-      new FormGroup({
-        member: new FormControl('',[Validators.required]),
-        onBehalfOf: new FormControl('',)
-      })
-    ],[Validators.required])
+    participant: new FormArray([],[Validators.required])
   })
 }
