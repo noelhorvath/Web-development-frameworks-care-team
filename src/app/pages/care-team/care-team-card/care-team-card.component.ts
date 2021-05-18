@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {CareTeam} from "../../../shared/models/careteam.model";
 
 @Component({
@@ -8,10 +8,10 @@ import {CareTeam} from "../../../shared/models/careteam.model";
 })
 export class CareTeamCardComponent implements OnInit {
   @Input() careTeam?: CareTeam;
+  @Output() getCareTeamId = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {FbBaseService} from "../../../services/fb-base.service";
 import {Period} from "../../../shared/models/period.model";
 import {Participant} from "../../../shared/models/participant.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-care-team-list',
@@ -17,7 +18,7 @@ export class CareTeamListComponent implements OnInit, OnDestroy {
   careTeams: any;
   getSubscription: any;
 
-  constructor(private fbs: FbBaseService, private dialog: MatDialog) {
+  constructor(private router: Router, private fbs: FbBaseService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -50,4 +51,7 @@ export class CareTeamListComponent implements OnInit, OnDestroy {
     subscription.unsubscribe();
   }
 
+  goToView(event: string) {
+    this.router.navigateByUrl('/home/view/' + event)
+  }
 }

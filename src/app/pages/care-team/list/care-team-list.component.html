@@ -1,5 +1,3 @@
-<p>care-team-list works!</p>
-<a [routerLink]="['/home/view-care-team']">Go to care team view</a>
 <button mat-button color="primary" (click)="openAddDialog()">Test add</button>
 <ng-container *ngIf="alertMsg !== undefined">{{ alertMsg }}</ng-container>
 <div *ngIf="careTeams === undefined; then empty else list">
@@ -11,5 +9,5 @@
 </ng-template>
 
 <ng-template #list>
-  <app-care-team-card *ngFor="let care_team of careTeams" [careTeam]="care_team"></app-care-team-card>
+  <app-care-team-card *ngFor="let care_team of careTeams" [careTeam]="care_team" (getCareTeamId)="goToView($event)"></app-care-team-card>
 </ng-template>

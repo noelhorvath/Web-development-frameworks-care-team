@@ -1,4 +1,4 @@
-<mat-card *ngIf="careTeam">
+<mat-card *ngIf="careTeam" (click)="getCareTeamId.emit(careTeam.id)">
   <mat-card-title>{{careTeam.name}}</mat-card-title>
   <mat-card-content>
     <p>Status:</p>
