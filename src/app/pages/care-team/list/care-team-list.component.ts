@@ -52,6 +52,6 @@ export class CareTeamListComponent implements OnInit, OnDestroy {
   }
 
   goToView(event: string) {
-    this.router.navigateByUrl('/home/view/' + event)
+    this.router.navigateByUrl('/home/view-care-team/' + event)
   }
 }
