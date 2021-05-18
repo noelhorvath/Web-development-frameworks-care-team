@@ -4,7 +4,7 @@ import {CareTeamViewComponent} from "./care-team-view.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: CareTeamViewComponent,
     data: {title: 'Care teams'}
   }

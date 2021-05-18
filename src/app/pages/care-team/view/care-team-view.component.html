@@ -1,1 +1,24 @@
-<p>care-team-view works!</p>
+<div *ngIf="careTeam === undefined; then notfound else found"></div>
+
+<ng-template #notfound>
+  <p>{{alertMsg}}</p>
+</ng-template>
+
+<ng-template #found>
+  <mat-card>
+    <mat-card-title>{{careTeam.name}}</mat-card-title>
+    <mat-card-content>
+      <p>Status:</p>
+      <p>{{careTeam.status}}</p>
+      <p>Number of participants</p>
+      <p>{{careTeam.participant.length}}</p>
+      <p>Period:</p>
+      <p>{{careTeam.period?.start}}-{{ careTeam.period?.end }}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <button mat-button>Update</button>
+      <button mat-button>Delete</button>
+      <button mat-button (click)="navigateBack()">Back</button>
+    </mat-card-footer>
+  </mat-card>
+</ng-template>
