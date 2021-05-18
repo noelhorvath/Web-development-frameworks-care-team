@@ -4,6 +4,8 @@ import { CareTeamListComponent } from './care-team-list.component';
 import {CareTeamListRoutingModule} from "./care-team-list-routing.module";
 import {MatButtonModule} from "@angular/material/button";
 import {CareTeamAddModule} from "../add/care-team-add.module";
+import {MatCardModule} from "@angular/material/card";
+import {CareTeamCardModule} from "../care-team-card/care-team-card.module";
 
 
 
@@ -11,8 +13,8 @@ import {CareTeamAddModule} from "../add/care-team-add.module";
   declarations: [
     CareTeamListComponent
   ],
-    imports: [
-        CommonModule, CareTeamListRoutingModule, MatButtonModule, CareTeamAddModule
-    ]
+  imports: [
+    CommonModule, CareTeamListRoutingModule, MatButtonModule, CareTeamAddModule, MatCardModule, CareTeamCardModule
+  ]
 })
 export class CareTeamListModule { }
