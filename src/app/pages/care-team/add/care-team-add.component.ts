@@ -4,6 +4,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {getCareTeamForm} from "../../../shared/forms/care-team.form";
 import {CareTeam} from "../../../shared/models/careteam.model";
 import {Participant} from "../../../shared/models/participant.model";
+import {Status} from "../../../shared/models/status.enum";
 
 @Component({
   selector: 'app-care-team-add',
@@ -16,6 +17,9 @@ export class CareTeamAddComponent implements OnInit {
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<CareTeamAddComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
+  getStatusEnumValues(): Array<string>{
+    return Object.values(Status);
+  }
 
   get categories() {
     return this.form.controls["category"] as FormArray;

@@ -1,44 +1,39 @@
 <h2 mat-dialog-title>Add new care team</h2>
 <mat-dialog-content>
   <form [formGroup]="form">
-    <br/>
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input matInput type="text" formControlName="name"/>
     </mat-form-field>
-    <br/>
     <mat-form-field>
       <mat-label>Status</mat-label>
-      <input matInput type="text" formControlName="status"/>
+      <mat-select formControlName="status">
+        <ng-container *ngFor="let status of getStatusEnumValues()">
+          <mat-option value="{{status}}">{{status}}</mat-option>
+        </ng-container>
+      </mat-select>
     </mat-form-field>
-    <br/>
     <ng-container formArrayName="category">
       <h3>Categories</h3>
-      <br/>
       <button mat-button (click)="addCategoryFormControl()">+</button>
-      <br/>
       <ng-container *ngFor="let categoryFormControl of categories.controls; let i = index">
         <mat-form-field>
           <mat-label>{{ i + 1 }}. category</mat-label>
           <input matInput type="text" [formControlName]="i"/>
           <button mat-button (click)="deleteCategoryFormControl(i)">Remove</button>
         </mat-form-field>
-        <br/>
       </ng-container>
     </ng-container>
-    <br/>
     <mat-form-field>
       <mat-label>Subject</mat-label>
       <input matInput type="text" formControlName="subject"/>
     </mat-form-field>
     <div formGroupName="period">
       <h3>Period</h3>
-      <br/>
       <mat-form-field>
         <label>Start date</label>
         <input matInput type="date" formControlName="start"/>
       </mat-form-field>
-      <br/>
       <mat-form-field>
         <label>End date</label>
         <input matInput type="date" formControlName="end"/>
@@ -46,7 +41,6 @@
     </div>
     <ng-container formArrayName="participant">
       <h3>Participants</h3>
-      <br/>
       <button mat-button (click)="addParticipantFormGroup()">+</button>
       <ng-container *ngFor="let participantGroup of participants.controls; let i = index">
         <div [formGroupName]="i">
@@ -60,7 +54,6 @@
           </mat-form-field>
         </div>
         <button mat-button (click)="deleteParticipantFormGroup(i)">Remove</button>
-        <br/>
       </ng-container>
     </ng-container>
   </form>
