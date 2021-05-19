@@ -51,10 +51,8 @@ export class CareTeamViewComponent implements OnInit, OnDestroy {
       if (careTeam !== undefined) {
         this.fbs.update(this.collectionName, this.id, careTeam).then(result =>{
           this.alertMsg = "New care team has been successfully updated!";
-          console.log(result);
         }).catch(error =>{
           this.alertMsg = "Something went wrong while updating care team!";
-          console.warn(error);
         })
       }
     }, error => {
@@ -66,16 +64,17 @@ export class CareTeamViewComponent implements OnInit, OnDestroy {
     this.getSubscription.unsubscribe();
   }
 
-  navigateBack() {
-    this.router.navigateByUrl('home/care-teams')
+  navigateBack(): void {
+    this.router.navigateByUrl('home/care-teams');
   }
 
   deleteCareTeam(): void {
     this.fbs.delete(this.collectionName,this.id).then(result =>{
       window.alert('Care team has been successfully deleted!');
-      this.router.navigateByUrl('home/care-teams');
     }).catch(error =>{
       window.alert('\'There was an error while deleting care team: ' + error.message);
-    })
+    }).finally(() =>{
+      this.navigateBack();
+    });
   }
 }
