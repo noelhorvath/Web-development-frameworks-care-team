@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from "./home.component";
+import {AuthGuard} from "../../shared/guards/auth.guard";
 
 const routes: Routes = [
   { path: '', redirectTo: 'care-teams', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const routes: Routes = [
         path: 'view-care-team',
         loadChildren: () => import('./../care-team/view/care-team-view.module').then(m => m.CareTeamViewModule)
       }
-    ]
+    ],
+    canActivateChild: [AuthGuard]
   }
 ];
 
