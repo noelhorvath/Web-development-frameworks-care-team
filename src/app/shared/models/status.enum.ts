@@ -1,4 +1,4 @@
-export enum status {
+export enum Status {
   proposed = 'proposed',
   active = 'active',
   suspended = 'suspended',
