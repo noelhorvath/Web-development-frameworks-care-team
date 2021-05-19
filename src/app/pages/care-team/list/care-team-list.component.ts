@@ -1,35 +1,37 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {CareTeamAddComponent} from "../add/care-team-add.component";
 import {CareTeam} from "../../../shared/models/careteam.model";
 import {MatDialog} from "@angular/material/dialog";
 import {FbBaseService} from "../../../services/fb-base.service";
 import {Router} from "@angular/router";
+import {Observable, throwError} from "rxjs";
+import {catchError} from "rxjs/operators";
 
 @Component({
   selector: 'app-care-team-list',
   templateUrl: './care-team-list.component.html',
   styleUrls: ['./care-team-list.component.scss']
 })
-export class CareTeamListComponent implements OnInit, OnDestroy {
+export class CareTeamListComponent implements OnInit, AfterViewInit {
   alertMsg: any;
   collectionName: string = "CareTeams";
-  careTeams: any;
-  getSubscription: any;
+  careTeams: Observable<CareTeam[]> | null = null;
+  errorMsg: any;
 
   constructor(private router: Router, private fbs: FbBaseService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.getSubscription = this.fbs.get(this.collectionName).subscribe(
-      (data: CareTeam[]) =>{
-        this.careTeams = data;
-      }, (error: any) =>{
-        console.log(error.toString())
-      });
+    this.getCareTeamsObservable();
   }
 
-  ngOnDestroy(): void {
-    this.getSubscription.unsubscribe();
+  getCareTeamsObservable(): void {
+    this.careTeams = this.fbs.get(this.collectionName).pipe(
+      catchError(error => {
+        this.errorMsg = error.message;
+        return throwError(error);
+      })
+    );
   }
 
   openAddDialog(): void {
@@ -50,5 +52,8 @@ export class CareTeamListComponent implements OnInit, OnDestroy {
 
   goToView(event: string) {
     this.router.navigateByUrl('/home/view-care-team/' + event)
+  }
+
+  ngAfterViewInit(): void {
   }
 }

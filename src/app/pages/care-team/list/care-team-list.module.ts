@@ -6,7 +6,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {CareTeamAddModule} from "../add/care-team-add.module";
 import {MatCardModule} from "@angular/material/card";
 import {CareTeamCardModule} from "../card/care-team-card.module";
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import {CareTeamCardModule} from "../card/care-team-card.module";
     CareTeamListComponent
   ],
   imports: [
-    CommonModule, CareTeamListRoutingModule, MatButtonModule, CareTeamAddModule, MatCardModule, CareTeamCardModule
+    CommonModule, CareTeamListRoutingModule, MatButtonModule, CareTeamAddModule, MatCardModule, CareTeamCardModule, MatProgressSpinnerModule
   ]
 })
 export class CareTeamListModule { }

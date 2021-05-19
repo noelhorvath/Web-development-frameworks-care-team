@@ -1,11 +1,21 @@
 <button mat-button color="primary" (click)="openAddDialog()">Test add</button>
-<ng-container *ngIf="alertMsg !== undefined">{{ alertMsg }}</ng-container>
-<div *ngIf="careTeams === undefined; then empty else list"></div>
+<ng-container *ngIf="alertMsg !== undefined">
+  <p>{{ alertMsg }}</p>
+</ng-container>
 
-<ng-template #empty>
-  <p>No care teams are available!</p>
+<ng-container *ngIf="careTeams | async as careTeamList; else loadingOrError">
+  <ng-container *ngIf="careTeamList.length === 0">
+    <p>No care teams are available!</p>
+  </ng-container>
+  <app-care-team-card *ngFor="let care_team of careTeamList" [careTeam]="care_team" (getCareTeamId)="goToView($event)"></app-care-team-card>
+</ng-container>
+
+<ng-template #loadingOrError>
+  <ng-container *ngIf="errorMsg; else loading">
+    <p>{{errorMsg}}</p>
+  </ng-container>
 </ng-template>
 
-<ng-template #list>
-  <app-care-team-card *ngFor="let care_team of careTeams" [careTeam]="care_team" (getCareTeamId)="goToView($event)"></app-care-team-card>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
 </ng-template>
