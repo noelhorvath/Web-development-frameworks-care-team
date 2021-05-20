@@ -14,6 +14,7 @@ import {Status} from "../../../shared/models/status.enum";
 export class CareTeamAddComponent implements OnInit {
   form: FormGroup = getCareTeamForm();
   btnName: any;
+  title: any;
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<CareTeamAddComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
@@ -68,8 +69,10 @@ export class CareTeamAddComponent implements OnInit {
     if(this.data === null){
       this.addParticipantFormGroup();
       this.btnName = 'Add';
+      this.title = 'Add new care team'
     }else{
       this.btnName = 'Update';
+      this.title = 'Update care team'
     }
   }
 
