@@ -1,4 +1,4 @@
-<div class="container-fluid min-height m-4">
+<div class="container-fluid min-height mt-5 mb-5">
   <div *ngIf="careTeam === undefined; then loadingOrNotFound else found"></div>
 
   <ng-template #loadingOrNotFound>
@@ -16,38 +16,45 @@
   </ng-template>
 
   <ng-template #found>
+    <ng-container *ngIf="alertMsg">
+        <span class="d-flex flex-column col-auto alert alert-info col text-center text-break m-2"  role="alert">
+          {{alertMsg}}
+        </span>
+    </ng-container>
     <div class="max-height d-flex flex-row justify-content-center align-items-center">
-      <mat-card class="d-flex flex-column col-6">
+      <mat-card class="d-flex flex-column col-auto">
         <mat-card-title class="text-center text-break">{{careTeam.name}}</mat-card-title>
-        <mat-card-content class="d-flex flex-column m-2">
+        <mat-card-content class="border-top border-bottom p-3 border-3 border-dark d-flex flex-column m-2">
           <div class="row">
-            <p class="col fw-bolder">Categories:</p>
-            <p class="col text-center text-break">{{categoriesToString()}}</p>
+            <p class="col-4 fw-bolder">Categories:</p>
+            <p class="col-8 text-center text-break">{{categoriesToString()}}</p>
           </div>
           <div class="row">
-            <p class="col fw-bolder">Status:</p>
-            <p class="col text-center">{{careTeam.status}}</p>
+            <p class="col-4 fw-bolder">Status:</p>
+            <p class="col-8 text-center">{{careTeam.status}}</p>
           </div>
           <div class="row">
-            <p class="col fw-bolder">Subject:</p>
-            <p class="col text-center text-break">{{ careTeam.subject ? careTeam.subject : '-' }}</p>
+            <p class="col-4 fw-bolder">Subject:</p>
+            <p class="col-8 text-center text-break">{{ careTeam.subject ? careTeam.subject : '-' }}</p>
           </div>
           <div class="row">
-            <p class="col fw-bolder">Period:</p>
-            <p class="col text-center text-break">{{ careTeam.period ? careTeam.period.start + '-' + careTeam.period.end : '-' }}</p>
+            <p class="col-4 fw-bolder">Period:</p>
+            <p class="col-8 text-center text-break">{{ careTeam.period ? careTeam.period.start + '-' + careTeam.period.end : '-' }}</p>
           </div>
-          <div class="row text-center mt-2">
+          <div class="row text-center mt-3">
             <p class="col fw-bolder">Participants</p>
           </div>
-          <div class="m-3">
+          <div class="mt-3 ml-3 mr-3">
             <ng-container *ngFor="let item of careTeam.participant">
-              <div class="row">
-                <p class="col fw-bolder">Member's name:</p>
-                <p class="col text-center text-break">{{ item.member }}</p>
-              </div>
-              <div class="row">
-                <p class="col fw-bolder">On behalf of:</p>
-                <p class="col text-center text-break">{{ item.onBehalfOf ? item.onBehalfOf : '-' }}</p>
+              <div class="border-top border-3 border-dark pt-2 pb-2">
+                <div class="row">
+                  <p class="col fw-bolder">Member's name:</p>
+                  <p class="col text-center text-break">{{ item.member }}</p>
+                </div>
+                <div class="row">
+                  <p class="col fw-bolder">On behalf of:</p>
+                  <p class="col text-center text-break">{{ item.onBehalfOf ? item.onBehalfOf : '-' }}</p>
+                </div>
               </div>
             </ng-container>
           </div>
@@ -56,10 +63,8 @@
           <button class="btn-outline-success" mat-button (click)="openAddDialogForUpdate()">Update</button>
           <button class="btn-outline-danger" mat-button (click)="deleteCareTeam()">Delete</button>
           <button class="btn-outline-warning" mat-button (click)="navigateBack()">Back</button>
-          <ng-container *ngIf="alertMsg">{{alertMsg}}</ng-container>
         </mat-card-footer>
       </mat-card>
     </div>
-
   </ng-template>
 </div>
