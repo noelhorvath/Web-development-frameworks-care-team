@@ -13,7 +13,9 @@
 
   <ng-container *ngIf="careTeams | async as careTeamList; else loadingOrError">
     <ng-container *ngIf="careTeamList.length === 0;">
-      <p>No care teams are available!</p>
+      <div class="alert alert-danger text-center text-break m-3"  role="alert">
+        No registered care teams!
+      </div>
     </ng-container>
     <app-care-team-card *ngFor="let care_team of careTeamList" [careTeam]="care_team" (getCareTeamId)="goToView($event)"></app-care-team-card>
   </ng-container>
