@@ -1,5 +1,5 @@
-<h2 class="text-center" mat-dialog-title>{{title}}</h2>
 <mat-dialog-content>
+  <h2 class="text-center" mat-dialog-title>{{title}}</h2>
   <form class="d-flex flex-column col-auto" [formGroup]="form">
     <mat-form-field>
       <mat-label>Name</mat-label>
@@ -71,10 +71,10 @@
       </div>
     </ng-container>
   </form>
-</mat-dialog-content>
-<mat-dialog-actions class="d-flex flex-column align-items-center">
-  <div class="col">
-    <button class="btn-outline-danger" mat-button (click)="dialogRef.close()">Cancel</button>
-    <button class="btn-outline-success" mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">{{btnName}}</button>
+  <div class="d-flex flex-column align-items-center mt-2">
+    <div class="col">
+      <button class="btn-outline-danger" mat-button (click)="dialogRef.close()">Cancel</button>
+      <button class="btn-outline-success" mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">{{btnName}}</button>
+    </div>
   </div>
-</mat-dialog-actions>
+</mat-dialog-content>
