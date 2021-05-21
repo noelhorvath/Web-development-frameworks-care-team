@@ -27,4 +27,8 @@ export class AuthService {
     return this.afAuth.authState;
   }
 
+  getLoggedInUser(): Observable<any>{
+    return this.afAuth.user;
+  }
+
 }
