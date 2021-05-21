@@ -1,15 +1,30 @@
-<mat-card appOnHover *ngIf="careTeam" (click)="getCareTeamId.emit(careTeam.id)">
-  <mat-card-title>{{careTeam.name}}</mat-card-title>
-  <mat-card-content>
-    <p>Status:</p>
-    <p>{{careTeam.status}}</p>
-    <p>Number of participants</p>
-    <p>{{careTeam.participant.length}}</p>
-    <p>Period:</p>
-    <p>{{careTeam.period?.start}}-{{ careTeam.period?.end }}</p>
-  </mat-card-content>
-  <mat-card-footer>
-    <button mat-button (click)="deleteCareTeam()">Delete</button>
-    <ng-container *ngIf="alertMsg">{{alertMsg}}</ng-container>
-  </mat-card-footer>
-</mat-card>
+<div class="d-flex flex-column col-auto m-4">
+  <mat-card appOnHover *ngIf="careTeam" (click)="getCareTeamId.emit(careTeam.id)">
+    <mat-card-content>
+      <div class="row text-center">
+        <div class="col-4">
+          <p class="fw-bolder">Name</p>
+          <p class="text-break">{{careTeam.name}}</p>
+        </div>
+        <div class="col-2">
+          <p class="fw-bolder">Status</p>
+          <p class="text-break">{{careTeam.status}}</p>
+        </div>
+        <div class="col-3">
+          <p class="fw-bolder">Number of participants</p>
+          <p class="text-break">{{careTeam.participant.length}}</p>
+        </div>
+        <div class="col-3">
+          <p class="fw-bolder">Period</p>
+          <p class="text-break">{{careTeam.period?.start}}-{{ careTeam.period?.end }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+    <ng-container *ngIf="alertMsg">
+      <mat-card-footer class="alert alert-danger text-center text-break" role="alert">
+        {{alertMsg}}
+      </mat-card-footer>
+    </ng-container>
+  </mat-card>
+</div>
+
