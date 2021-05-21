@@ -1,34 +1,65 @@
-<div *ngIf="careTeam === undefined; then notfound else found"></div>
+<div class="container-fluid min-height m-4">
+  <div *ngIf="careTeam === undefined; then loadingOrNotFound else found"></div>
 
-<ng-template #notfound>
-  <p>{{notFoundMsg}}</p>
-</ng-template>
+  <ng-template #loadingOrNotFound>
+    <ng-container *ngIf="notFoundMsg; else loading">
+      <div class="alert alert-warning text-center text-break m-1"  role="alert">
+        <p class="fw-bolder">{{notFoundMsg}}</p>
+      </div>
+    </ng-container>
+  </ng-template>
 
-<ng-template #found>
-  <mat-card>
-    <mat-card-title>{{careTeam.name}}</mat-card-title>
-    <mat-card-content>
-      <p>Categories:</p>
-      <ng-container *ngFor="let cat of careTeam?.category">
-        <p>{{cat}}</p>
-      </ng-container>
-      <p>Status:</p>
-      <p>{{careTeam.status}}</p>
-      <p>Participants</p>
-        <ng-container *ngFor="let item of careTeam.participant">
-          <p>Member's name: {{ item.member }}</p>
-          <p>On behalf of: {{ item?.onBehalfOf }}</p>
-        </ng-container>
-      <p>Subject:</p>
-      <p>{{careTeam?.subject}}</p>
-      <p>Period:</p>
-      <p>{{careTeam.period?.start}}-{{ careTeam.period?.end }}</p>
-    </mat-card-content>
-    <mat-card-footer>
-      <button mat-button (click)="openAddDialogForUpdate()">Update</button>
-      <button mat-button (click)="deleteCareTeam()">Delete</button>
-      <button mat-button (click)="navigateBack()">Back</button>
-      <ng-container *ngIf="alertMsg">{{alertMsg}}</ng-container>
-    </mat-card-footer>
-  </mat-card>
-</ng-template>
+  <ng-template #loading>
+    <div class="d-flex flex-column justify-content-center align-items-center m-4">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+
+  <ng-template #found>
+    <div class="max-height d-flex flex-row justify-content-center align-items-center">
+      <mat-card class="d-flex flex-column col-6">
+        <mat-card-title class="text-center text-break">{{careTeam.name}}</mat-card-title>
+        <mat-card-content class="d-flex flex-column m-2">
+          <div class="row">
+            <p class="col fw-bolder">Categories:</p>
+            <p class="col text-center text-break">{{categoriesToString()}}</p>
+          </div>
+          <div class="row">
+            <p class="col fw-bolder">Status:</p>
+            <p class="col text-center">{{careTeam.status}}</p>
+          </div>
+          <div class="row">
+            <p class="col fw-bolder">Subject:</p>
+            <p class="col text-center text-break">{{ careTeam.subject ? careTeam.subject : '-' }}</p>
+          </div>
+          <div class="row">
+            <p class="col fw-bolder">Period:</p>
+            <p class="col text-center text-break">{{ careTeam.period ? careTeam.period.start + '-' + careTeam.period.end : '-' }}</p>
+          </div>
+          <div class="row text-center mt-2">
+            <p class="col fw-bolder">Participants</p>
+          </div>
+          <div class="m-3">
+            <ng-container *ngFor="let item of careTeam.participant">
+              <div class="row">
+                <p class="col fw-bolder">Member's name:</p>
+                <p class="col text-center text-break">{{ item.member }}</p>
+              </div>
+              <div class="row">
+                <p class="col fw-bolder">On behalf of:</p>
+                <p class="col text-center text-break">{{ item.onBehalfOf ? item.onBehalfOf : '-' }}</p>
+              </div>
+            </ng-container>
+          </div>
+        </mat-card-content>
+        <mat-card-footer class="d-flex flex-row justify-content-center pt-2 pb-2">
+          <button class="btn-outline-success" mat-button (click)="openAddDialogForUpdate()">Update</button>
+          <button class="btn-outline-danger" mat-button (click)="deleteCareTeam()">Delete</button>
+          <button class="btn-outline-warning" mat-button (click)="navigateBack()">Back</button>
+          <ng-container *ngIf="alertMsg">{{alertMsg}}</ng-container>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+
+  </ng-template>
+</div>

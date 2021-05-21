@@ -5,6 +5,7 @@ import {CareTeamViewRoutingModule} from "./care-team-view-routing.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {CareTeamAddModule} from "../add/care-team-add.module";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 
@@ -13,7 +14,7 @@ import {CareTeamAddModule} from "../add/care-team-add.module";
     CareTeamViewComponent
   ],
   imports: [
-    CommonModule, CareTeamViewRoutingModule, MatCardModule, MatButtonModule, CareTeamAddModule
+    CommonModule, CareTeamViewRoutingModule, MatCardModule, MatButtonModule, CareTeamAddModule, MatProgressSpinnerModule
   ]
 })
 export class CareTeamViewModule { }

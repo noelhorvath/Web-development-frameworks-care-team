@@ -60,6 +60,19 @@ export class CareTeamViewComponent implements OnInit, OnDestroy {
     });
   }
 
+  categoriesToString(): string{
+    let result: string= '';
+    this.careTeam.category.forEach((cat: string) => {
+      result += cat + ' ';
+    });
+
+    if(result.length === 0){
+      return '-'
+    }else{
+      return result.substring(0,(result.length-1));
+    }
+  }
+
   ngOnDestroy(): void {
     this.getSubscription.unsubscribe();
   }
