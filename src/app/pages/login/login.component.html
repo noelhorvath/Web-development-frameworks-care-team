@@ -1,20 +1,28 @@
-<div>
-  <mat-card>
-    <form [formGroup]="form" (ngSubmit)="login()">
-      <h2>Login</h2>
-      <mat-form-field>
-        <mat-label>Email:</mat-label>
-        <input matInput type="email" formControlName="email"/>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Password:</mat-label>
-        <input matInput type="password" formControlName="password"/>
-      </mat-form-field>
-      <mat-card id="alertCard" *ngIf="alertMessage">
-        {{alertMessage}}
-      </mat-card>
-      <button type="submit" color="primary" mat-button [disabled]="form.invalid">Login</button>
-      <button mat-button (click)="navTo('/registration')">Register as a Practitioner</button>
-    </form>
-  </mat-card>
+<div class="container-fluid max-height">
+  <div class="row justify-content-center align-items-center max-height">
+    <mat-card class="d-flex flex-column col-auto">
+      <mat-card-title>
+        <h2 class="text-center fw-bold">Login</h2>
+      </mat-card-title>
+      <form class="d-flex flex-column col-12"  [formGroup]="form" (ngSubmit)="login()">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password"/>
+        </mat-form-field>
+        <div class="d-flex flex-row justify-content-center">
+          <button type="submit" color="primary" mat-button [disabled]="form.invalid">Login</button>
+          <button mat-button color="primary" (click)="navTo('/registration')">Register as a Practitioner</button>
+        </div>
+      </form>
+      <ng-container *ngIf="alertMessage">
+        <mat-card-footer class="alert alert-danger text-center text-break" role="alert">
+          {{alertMessage}}
+        </mat-card-footer>
+      </ng-container>
+    </mat-card>
+  </div>
 </div>
