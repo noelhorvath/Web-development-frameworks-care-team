@@ -1,20 +1,19 @@
 <div class="d-flex flex-column col-auto m-4">
   <mat-card appOnHover *ngIf="careTeam" (click)="getCareTeamId.emit(careTeam.id)">
-    <mat-card-content>
+    <mat-card-title class="mb-2">
+      <p class="text-break text-center">{{careTeam.name}}</p>
+    </mat-card-title>
+    <mat-card-content class="pt-3 border-3 border-top border-dark">
       <div class="row text-center">
         <div class="col-4">
-          <p class="fw-bolder">Name</p>
-          <p class="text-break">{{careTeam.name}}</p>
-        </div>
-        <div class="col-2">
           <p class="fw-bolder">Status</p>
           <p class="text-break">{{careTeam.status}}</p>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <p class="fw-bolder">Number of participants</p>
           <p class="text-break">{{careTeam.participant.length}}</p>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <p class="fw-bolder">Period</p>
           <p class="text-break">{{careTeam.period?.start}}-{{ careTeam.period?.end }}</p>
         </div>
