@@ -7,19 +7,21 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from "../environments/environment.prod";
+import {FooterModule} from "./pages/footer/footer.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        FooterModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
