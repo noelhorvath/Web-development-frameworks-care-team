@@ -1,6 +1,10 @@
-# WebDevelopmentFrameworksCareTeam
+# Care Team Manager Angular Web Application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
+
+## FHIR Care Team
+
+The web application's model is based on the following standard: https://www.hl7.org/fhir/careteam.html
 
 ## Development server
 
